@@ -78,7 +78,7 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var yticks = otu_ids.slice(0,10).map(item => "OTU " + item).reverse();
+    var yticks = otu_ids.slice(0,10).map(item => "OTU " + item + " ").reverse();
     var xticks = sample_values.slice(0,10).map(item => item).reverse();
     var markerLabel = otu_labels.slice(0,10).map(item => item).reverse();
     
@@ -95,7 +95,12 @@ function buildCharts(sample) {
     };
     // // 9. Create the layout for the bar chart. 
     var barLayout = {
-      title: "Top 10 Bacteria Cultures Found",    
+      title: {text: "<b> Top 10 Bacteria Cultures Found </b>"},
+      paper_bgcolor: "rgba(70,70,70,0)",
+      plot_bgcolor: "rgba(70,70,70,0)",
+      font: {
+        color: "#f7f7f7"
+      }
     };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", [barData], barLayout)
@@ -116,9 +121,14 @@ function buildCharts(sample) {
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
-      title: "Bacteria Cultures per Sample",
-      xaxis: {title: "OTU ID"},
-      hovermode: "closest"
+      title: {text: "<b> Bacteria Cultures per Sample </b>"},
+      xaxis: {title: "OTU ID",},
+      hovermode: "closest",
+      paper_bgcolor: "rgba(70,70,70,0)",
+      plot_bgcolor: "rgba(70,70,70,0)",
+      font: {
+        color: "#f7f7f7",        
+      }
     };
 
     // 3. Use Plotly to plot the data with the layout.
@@ -140,7 +150,7 @@ function buildCharts(sample) {
     var gaugeData = [{
       domain: {x: [0, 1], y: [0, 1]},
       value: wfreq,
-      title: {text: "<b> Belly Button Washing Frequency </b> <br> Scrubs per week"},
+      title: {text: "<b> Belly Button Washing Frequency </b> <br> Scrubs per Week"},
       type: "indicator",
       mode: "gauge+number",
       gauge: {
@@ -156,7 +166,15 @@ function buildCharts(sample) {
       }
     }];
 
-    Plotly.newPlot("gauge", gaugeData);
+    var gaugeLayout = {
+      paper_bgcolor: "rgba(70,70,70,0)",
+      plot_bgcolor: "rgba(70,70,70,0)",
+      font: {
+        color: "#f7f7f7"
+      }
+    }
+
+    Plotly.newPlot("gauge", gaugeData, gaugeLayout);
   });
 };
 
