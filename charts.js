@@ -171,7 +171,7 @@ function buildCharts(sample) {
       font: {
         color: "#f7f7f7"
       }
-    }
+    };
 
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
   });
