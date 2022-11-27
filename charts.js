@@ -148,7 +148,6 @@ function buildCharts(sample) {
 
     // 4. create trace for guage
     var gaugeData = [{
-      domain: {x: [0, 1], y: [0, 1]},
       value: wfreq,
       title: {text: "<b> Belly Button Washing Frequency </b> <br> Scrubs per Week"},
       type: "indicator",
